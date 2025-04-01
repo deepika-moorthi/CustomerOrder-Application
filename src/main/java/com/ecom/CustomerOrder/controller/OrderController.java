@@ -1,7 +1,7 @@
 package com.ecom.CustomerOrder.controller;
 
 
-import com.ecom.customerorder.model.Order;
+import com.ecom.CustomerOrder.model.Order;
 import com.ecom.CustomerOrder.service.OrderService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +35,12 @@ public class OrderController {
     @DeleteMapping("/{id}")
     public void deleteOrder(@PathVariable Long id) {
         service.deleteOrder(id);
+    }
+
+    @PostMapping("/bulk")
+    public List<Order> addOrders(@RequestBody List<Order> orders) {
+        System.out.println("Received orders: " + orders);
+        return service.addOrders(orders);
     }
 }
 

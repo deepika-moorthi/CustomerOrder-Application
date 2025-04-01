@@ -1,5 +1,5 @@
 
-package com.ecom.customerorder.model;
+package com.ecom.CustomerOrder.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -21,4 +21,19 @@ public class Order {
     @JoinColumn(name = "customer_id", nullable = false)
     @JsonBackReference
     private com.ecom.customerorder.model.Customer customer;
+
+    public Long getId() {
+        return id;
+    }
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", productName='" + productName + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", customerId=" + (customer != null ? customer.getId() : "NULL") +
+                '}';
+    }
+
 }
